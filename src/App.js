@@ -12,6 +12,7 @@ const RouteContainer = styled.div`
   width: 100%;
   margin-left: 16px;
   flex-direction: row;
+  height: 100%;
 
   @media (max-width: 768px) {
     margin-left: 0px;

@@ -12,6 +12,7 @@ const StyledNavbar = styled(Box)`
 
   @media (max-width: 768px) {
     width: auto;
+    margin-bottom: 16px;
   }
 `;
 

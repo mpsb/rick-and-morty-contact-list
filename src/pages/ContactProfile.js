@@ -6,6 +6,12 @@ import Header from "../components/Header";
 
 const StyledBox = styled(Box)`
   width: 55%;
+  margin-left: 16px;
+
+  @media (max-width: 768px) {
+    margin: 16px 0px;
+    width: auto;
+  }
 `;
 
 export default function ContactProfile() {

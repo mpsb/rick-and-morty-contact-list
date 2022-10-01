@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Routes, Route, Outlet} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import styled from "styled-components";
 import Header from "../components/Header";
 import Box from "../components/Box";
@@ -7,15 +7,24 @@ import Input from "../components/Input";
 import Select from "../components/Select";
 import ContactListItem from "../components/ContactListItem";
 import RouterLink from "../components/RouterLink";
+import Flex from "../components/Flex";
 
 const ContactBox = styled(Box)`
   width: 30%;
   flex-direction: column;
   padding: 16px;
+  overflow-y: scroll;
+  height: 87.5vh;
 
   @media (max-width: 768px) {
     width: auto;
   }
+`;
+
+const StyledFlex = styled(Flex)`
+@media (max-width: 768px) {
+  flex-direction: column;
+}
 `;
 
 const genderOptions = [{value: '', text: 'Gender'}, {value: 'male', text: 'Male'}, {value: 'female', text: 'Female'}, {value: 'genderless', text: 'Genderless'}, {value: 'unknown', text: 'Unknown'}];
@@ -56,7 +65,7 @@ export default function Contact() {
   
 
   return (
-    <>
+    <StyledFlex flexDirection="row">
       <ContactBox>
         <Header>Contact</Header>
         <Input placeholder="Search for characters..." handleChange={handleInputChange} value={nameToSearch}/>
@@ -65,6 +74,6 @@ export default function Contact() {
         {profiles ? profiles.map((profile) => (<RouterLink to={`/contact/${profile.id}`} fontSize={16}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image}/></RouterLink>)) : <p>No characters found.</p>}
       </ContactBox>
       <Outlet/>
-    </>
+    </StyledFlex>
   );
 }
