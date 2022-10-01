@@ -20,7 +20,7 @@ export default function Navbar({ links }) {
     <StyledNavbar>
       <Title>Rick and Morty</Title>
       {links.map((link) => {
-        return <RouterLink to={link.url} text={link.name} />;
+        return <RouterLink to={link.url}>{link.name}</RouterLink>;
       })}
     </StyledNavbar>
   );

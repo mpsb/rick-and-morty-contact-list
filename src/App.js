@@ -4,12 +4,14 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
 import Index from "./pages/Index";
+import ContactProfile from "./pages/ContactProfile";
 
 const links = [{ name: "Contact", url: "/contact" }];
 
 const RouteContainer = styled.div`
   width: 100%;
   margin-left: 16px;
+  flex-direction: row;
 
   @media (max-width: 768px) {
     margin-left: 0px;
@@ -33,7 +35,9 @@ function App() {
         <RouteContainer>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<Contact />}>
+              <Route path=":userId" element={<ContactProfile />} />
+            </Route>
           </Routes>
         </RouteContainer>
       </AppContainer>

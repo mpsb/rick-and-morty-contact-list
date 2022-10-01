@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
+import {Routes, Route, Outlet} from 'react-router-dom';
 import styled from "styled-components";
 import Header from "../components/Header";
 import Box from "../components/Box";
 import Input from "../components/Input";
 import Select from "../components/Select";
 import ContactListItem from "../components/ContactListItem";
+import RouterLink from "../components/RouterLink";
 
 const ContactBox = styled(Box)`
   width: 30%;
@@ -52,15 +54,17 @@ export default function Contact() {
          });
   }, [nameToSearch, gender, status])
   
-  
 
   return (
-    <ContactBox>
-      <Header>Contact</Header>
-      <Input placeholder="Search for characters..." handleChange={handleInputChange} value={nameToSearch}/>
-      <Select options={genderOptions} handleChange={handleGenderChange} value={gender}/>
-      <Select options={statusOptions} handleChange={handleStatusChange} value={status}/>
-      {profiles ? profiles.map((profile) => (<ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image}/>)) : <p>No characters found.</p>}
-    </ContactBox>
+    <>
+      <ContactBox>
+        <Header>Contact</Header>
+        <Input placeholder="Search for characters..." handleChange={handleInputChange} value={nameToSearch}/>
+        <Select options={genderOptions} handleChange={handleGenderChange} value={gender}/>
+        <Select options={statusOptions} handleChange={handleStatusChange} value={status}/>
+        {profiles ? profiles.map((profile) => (<RouterLink to={`/contact/${profile.id}`} fontSize={16}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image}/></RouterLink>)) : <p>No characters found.</p>}
+      </ContactBox>
+      <Outlet/>
+    </>
   );
 }
