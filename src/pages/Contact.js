@@ -7,7 +7,7 @@ import Select from "../components/Select";
 import ContactListItem from "../components/ContactListItem";
 
 const ContactBox = styled(Box)`
-  width: 25%;
+  width: 30%;
   flex-direction: column;
   padding: 16px;
 
@@ -60,7 +60,7 @@ export default function Contact() {
       <Input placeholder="Search for characters..." handleChange={handleInputChange} value={nameToSearch}/>
       <Select options={genderOptions} handleChange={handleGenderChange} value={gender}/>
       <Select options={statusOptions} handleChange={handleStatusChange} value={status}/>
-      {profiles.map((profile) => (<ContactListItem name={profile.name} species={profile.species}/>))}
+      {profiles ? profiles.map((profile) => (<ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image}/>)) : <p>No characters found.</p>}
     </ContactBox>
   );
 }

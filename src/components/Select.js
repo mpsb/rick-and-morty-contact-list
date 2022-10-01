@@ -10,6 +10,7 @@ const StyledSelect = styled.select`
   color: var(--primary-color);
   font-size: 16px;
   transition: 0.5s ease;
+  margin-bottom: 16px;
 
   :focus {
     outline: none;

@@ -9,6 +9,7 @@ const StyledInput = styled.input`
   color: var(--primary-color);
   font-size: 16px;
   transition: 0.5s ease;
+  margin-bottom: 16px;
 
   ::placeholder {
     color: rgba(139, 207, 33, 0.7);
