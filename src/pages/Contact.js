@@ -40,7 +40,6 @@ export default function Contact() {
   const [status, setStatus] = useState('');
 
   const resultRefs = useRef([]);
-  const linkRefs = useRef([]);
 
   const dispatch = useDispatch();
 
@@ -61,6 +60,11 @@ export default function Contact() {
   const handleStatusChange = event => {
     console.log(event.target.value)
     setStatus(event.target.value);
+  }
+
+  const resetFilters = () => {
+    setStatus('');
+    setGender('');
   }
 
   useEffect(() => {

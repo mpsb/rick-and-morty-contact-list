@@ -19,7 +19,6 @@ export default function ContactProfile() {
   const { userId } = useParams();
   const selectedContactProfile = useSelector((state) => state.setProfile.value);
 
-  console.log(selectedContactProfile);
   return (
     <StyledBox>
       <Header>
