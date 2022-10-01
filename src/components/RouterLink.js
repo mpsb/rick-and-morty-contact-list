@@ -10,9 +10,9 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default function RouterLink({ to, children, fontSize }) {
+export default function RouterLink({ to, children, fontSize, onClick }) {
   return (
-    <StyledLink to={to} fontSize={fontSize}>
+    <StyledLink to={to} fontSize={fontSize} onClick={onClick}>
       {children}
     </StyledLink>
   );

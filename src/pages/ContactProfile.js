@@ -3,9 +3,10 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Box from "../components/Box";
 import Header from "../components/Header";
+import { useSelector } from "react-redux";
 
 const StyledBox = styled(Box)`
-  width: 55%;
+  width: 100%;
   margin-left: 16px;
 
   @media (max-width: 768px) {
@@ -16,10 +17,14 @@ const StyledBox = styled(Box)`
 
 export default function ContactProfile() {
   const { userId } = useParams();
-  console.log(userId);
+  const selectedContactProfile = useSelector((state) => state.setProfile.value);
+
+  console.log(selectedContactProfile);
   return (
     <StyledBox>
-      <Header>{userId} Risotto Groupon</Header>
+      <Header>
+        {userId} {selectedContactProfile.name}
+      </Header>
     </StyledBox>
   );
 }

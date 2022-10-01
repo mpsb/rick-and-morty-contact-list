@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {createRef, useEffect, useRef, useState} from "react";
 import {Outlet} from 'react-router-dom';
 import styled from "styled-components";
 import Header from "../components/Header";
@@ -8,12 +8,15 @@ import Select from "../components/Select";
 import ContactListItem from "../components/ContactListItem";
 import RouterLink from "../components/RouterLink";
 import Flex from "../components/Flex";
+import { useDispatch } from "react-redux";
+import { setProfile } from "../features/selectedProfile/selectProfileSlice";
 
 const ContactBox = styled(Box)`
-  width: 30%;
+  width: auto;
   flex-direction: column;
   padding: 16px;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 87.5vh;
 
   @media (max-width: 768px) {
@@ -36,6 +39,15 @@ export default function Contact() {
   const [gender, setGender] = useState('');
   const [status, setStatus] = useState('');
 
+  const resultRefs = useRef([]);
+  const linkRefs = useRef([]);
+
+  const dispatch = useDispatch();
+
+  const handleProfileLinkClick = (event, key) => {
+    dispatch(setProfile(resultRefs.current[key]));
+  }
+
   const handleInputChange = event => {
     console.log(event.target.value)
     setNameToSearch(event.target.value);
@@ -55,7 +67,6 @@ export default function Contact() {
     fetch(`https://rickandmortyapi.com/api/character/?name=${nameToSearch}&gender=${gender}&status=${status}`)
          .then((response) => response.json())
          .then((data) => {
-            console.log(data.results);
             setProfiles(data.results);
          })
          .catch((err) => {
@@ -71,7 +82,11 @@ export default function Contact() {
         <Input placeholder="Search for characters..." handleChange={handleInputChange} value={nameToSearch}/>
         <Select options={genderOptions} handleChange={handleGenderChange} value={gender}/>
         <Select options={statusOptions} handleChange={handleStatusChange} value={status}/>
-        {profiles ? profiles.map((profile) => (<RouterLink to={`/contact/${profile.id}`} fontSize={16}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image}/></RouterLink>)) : <p>No characters found.</p>}
+        {profiles ? profiles.map((profile, index) => {
+          resultRefs.current[index] = createRef();
+          resultRefs.current[index] = profile;
+
+          return <RouterLink to={`/contact/${profile.id}`} fontSize={16} key={index} onClick={event => handleProfileLinkClick(event, index)}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image}/></RouterLink>}) : <p>No characters found.</p>}
       </ContactBox>
       <Outlet/>
     </StyledFlex>

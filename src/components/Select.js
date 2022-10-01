@@ -31,8 +31,10 @@ const StyledOption = styled.option`
 export default function Select({ options, handleChange, value }) {
   return (
     <StyledSelect value={value} onChange={handleChange}>
-      {options.map((option) => (
-        <StyledOption value={option.value}>{option.text}</StyledOption>
+      {options.map((option, index) => (
+        <StyledOption value={option.value} key={`${option.value}-${index}`}>
+          {option.text}
+        </StyledOption>
       ))}
     </StyledSelect>
   );
