@@ -104,7 +104,7 @@ export default function ContactProfile() {
           {episodeList.map((episode) => (
             <EpisodeRow flexDirection="row" gap={8}>
               <EpisodeItem>{episode.name}</EpisodeItem>
-              <EpisodeItem>{episode.air_date}</EpisodeItem>
+              <EpisodeItem>{dateFormatter(episode.air_date)}</EpisodeItem>
               <EpisodeItem>{episode.episode}</EpisodeItem>
               <EpisodeItem>{dateFormatter(episode.created)}</EpisodeItem>
             </EpisodeRow>
