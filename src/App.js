@@ -28,7 +28,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <AppContainer>
+        <AppContainer className="styled-scrollbars">
           <Navbar links={links} />
           <Routes>
             <Route path="/" element={<Index />} />

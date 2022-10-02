@@ -7,6 +7,9 @@
 
 :root {
   --primary-color: #8BCF21;
+  --secondary-color: #21cf67;
+  --scrollbar-foreground: #8BCF21;
+  --scrollbar-background: #343030;
 }
 
 html {
@@ -20,6 +23,7 @@ body {
   background-color: #01041F;
   color: var(--primary-color);
   letter-spacing: 0.025em;
+  scrollbar-width: thin;
 }
 
 h1 {
@@ -28,4 +32,23 @@ h1 {
 
 #root {
   height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: var(--scrollbar-foreground);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-background);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
 }
