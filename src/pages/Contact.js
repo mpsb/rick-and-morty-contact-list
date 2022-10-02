@@ -1,14 +1,15 @@
 import React, {createRef, useEffect, useRef, useState} from "react";
+import { useDispatch } from "react-redux";
 import {Outlet} from 'react-router-dom';
 import styled from "styled-components";
 import Header from "../components/Header";
 import Box from "../components/Box";
+import Button from "../components/Button";
 import Input from "../components/Input";
 import Select from "../components/Select";
 import ContactListItem from "../components/ContactListItem";
 import RouterLink from "../components/RouterLink";
 import Flex from "../components/Flex";
-import { useDispatch } from "react-redux";
 import { setProfile } from "../features/selectedProfile/selectProfileSlice";
 
 const ContactBox = styled(Box)`
@@ -38,6 +39,7 @@ export default function Contact() {
   const [nameToSearch, setNameToSearch] = useState('');
   const [gender, setGender] = useState('');
   const [status, setStatus] = useState('');
+  const [isFiltersActive, setIsFiltersActive] = useState(false);
 
   const resultRefs = useRef([]);
 
@@ -65,6 +67,7 @@ export default function Contact() {
   const resetFilters = () => {
     setStatus('');
     setGender('');
+    setIsFiltersActive(false);
   }
 
   useEffect(() => {
@@ -77,6 +80,16 @@ export default function Contact() {
             console.log(err.message);
          });
   }, [nameToSearch, gender, status])
+
+  useEffect(() => {
+    if (gender !== '' | status !== '') {
+      setIsFiltersActive(true);
+    }
+    else {
+      setIsFiltersActive(false);
+    }
+  }, [gender, status])
+  
   
 
   return (
@@ -86,6 +99,7 @@ export default function Contact() {
         <Input placeholder="Search for characters..." handleChange={handleInputChange} value={nameToSearch}/>
         <Select options={genderOptions} handleChange={handleGenderChange} value={gender}/>
         <Select options={statusOptions} handleChange={handleStatusChange} value={status}/>
+        {isFiltersActive ? <Button onClick={resetFilters}>Clear filters</Button> : null}
         {profiles ? profiles.map((profile, index) => {
           resultRefs.current[index] = createRef();
           resultRefs.current[index] = profile;
