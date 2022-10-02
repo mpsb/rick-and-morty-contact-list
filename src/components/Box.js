@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { BREAKPOINTS } from "../constants";
 
 const StyledBox = styled.div`
   border: 4px solid #8bcf21;
@@ -10,7 +11,7 @@ const StyledBox = styled.div`
   gap: ${(props) => props.gap}px;
   padding: ${(props) => (props.padding ? props.padding : "32")}px;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
     width: auto;
   }
 `;

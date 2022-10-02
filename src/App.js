@@ -1,4 +1,5 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
@@ -7,24 +8,18 @@ import Contact from "./pages/Contact";
 import Index from "./pages/Index";
 import ContactProfile from "./pages/ContactProfile";
 import store from "./app/store";
-import { Provider, useSelector } from "react-redux";
+import { BREAKPOINTS } from "./constants";
 
 const links = [{ name: "Contact", url: "/contact" }];
 
-const RouteContainer = styled.div`
-  width: 100%;
-  margin-left: 16px;
-  flex-direction: row;
-
-  @media (max-width: 768px) {
-    margin-left: 0px;
-  }
-`;
 const AppContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  padding: 16px;
+  gap: 16px;
+  height: 95%;
+  flex: 1;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${BREAKPOINTS.tablet}px) {
     flex-direction: column;
   }
 `;
@@ -35,14 +30,12 @@ function App() {
       <Router>
         <AppContainer>
           <Navbar links={links} />
-          <RouteContainer>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/contact" element={<Contact />}>
-                <Route path=":userId" element={<ContactProfile />} />
-              </Route>
-            </Routes>
-          </RouteContainer>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/contact" element={<Contact />}>
+              <Route path=":userId" element={<ContactProfile />} />
+            </Route>
+          </Routes>
         </AppContainer>
       </Router>
     </Provider>

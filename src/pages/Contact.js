@@ -11,6 +11,7 @@ import ContactListItem from "../components/ContactListItem";
 import RouterLink from "../components/RouterLink";
 import Flex from "../components/Flex";
 import { setProfile } from "../features/selectedProfile/selectProfileSlice";
+import { BREAKPOINTS } from "../constants";
 
 const ContactBox = styled(Box)`
   width: auto;
@@ -18,15 +19,14 @@ const ContactBox = styled(Box)`
   padding: 16px;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 87.5vh;
 
-  @media (max-width: 768px) {
+  @media (max-width:  ${BREAKPOINTS.tablet}px) {
     width: auto;
   }
 `;
 
 const StyledFlex = styled(Flex)`
-@media (max-width: 768px) {
+@media (max-width:  ${BREAKPOINTS.tablet}px) {
   flex-direction: column;
 }
 `;
