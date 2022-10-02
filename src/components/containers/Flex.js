@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BREAKPOINTS } from "../constants";
+import { BREAKPOINTS } from "../../constants";
 
 const StyledFlex = styled.div`
   display: flex;

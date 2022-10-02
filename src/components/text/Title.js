@@ -5,9 +5,10 @@ const StyledTitle = styled.h1`
   font-family: Schwifty;
   font-size: 40px;
   text-align: center;
-  color: #83d2e4;
-  text-shadow: -1px -1px 0 #8bcf21, 1px -1px 0 #8bcf21, -1px 1px 0 #8bcf21,
-    1px 1px 0 #8bcf21;
+  color: var(--title-blue-color);
+  text-shadow: -0.5px -0.5px 0 var(--primary-color),
+    0.5px -0.5px 0 var(--primary-color), -0.5px 0.5px 0 var(--primary-color),
+    0.5px 0.5px 0 var(--primary-color);
 `;
 
 export default function Title(props) {

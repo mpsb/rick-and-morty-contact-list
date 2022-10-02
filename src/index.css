@@ -8,6 +8,10 @@
 :root {
   --primary-color: #8BCF21;
   --secondary-color: #21cf67;
+  --background-color: #01041f;
+  --primary-color-shade: #37540a;
+  --placeholder-color: rgba(139, 207, 33, 0.7);
+  --title-blue-color: #83d2e4;
   --scrollbar-foreground: #8BCF21;
   --scrollbar-background: #343030;
 }

@@ -3,14 +3,14 @@ import styled from "styled-components";
 import Box from "./Box";
 import Flex from "./Flex";
 import ProfileImage from "./ProfileImage";
-import ContactProfileName from "./ContactProfileName";
+import ContactProfileName from "../text/ContactProfileName";
 
 const ContactListItemBox = styled(Box)`
   transition: 0.2s ease;
   margin-top: 16px;
 
   :hover {
-    background-color: #37540a;
+    background-color: var(--primary-color-shade);
     cursor: pointer;
   }
 `;

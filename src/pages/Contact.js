@@ -2,14 +2,14 @@ import React, {createRef, useEffect, useRef, useState} from "react";
 import { useDispatch } from "react-redux";
 import {Outlet} from 'react-router-dom';
 import styled from "styled-components";
-import Header from "../components/Header";
-import Box from "../components/Box";
-import Button from "../components/Button";
-import Input from "../components/Input";
-import Select from "../components/Select";
-import ContactListItem from "../components/ContactListItem";
-import RouterLink from "../components/RouterLink";
-import Flex from "../components/Flex";
+import Header from "../components/text/Header";
+import Box from "../components/containers/Box";
+import Button from "../components/interactive/Button";
+import Input from "../components/interactive/Input";
+import Select from "../components/interactive/Select";
+import ContactListItem from "../components/containers/ContactListItem";
+import RouterLink from "../components/interactive/RouterLink";
+import Flex from "../components/containers/Flex";
 import { setProfile } from "../features/selectedProfile/selectProfileSlice";
 import { BREAKPOINTS } from "../constants";
 
@@ -22,6 +22,7 @@ const ContactBox = styled(Box)`
 
   @media (max-width:  ${BREAKPOINTS.tablet}px) {
     width: auto;
+    overflow-y: hidden;
   }
 `;
 

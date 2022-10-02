@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Box from "../components/Box";
-import Flex from "../components/Flex";
-import Header from "../components/Header";
-import ProfileImage from "../components/ProfileImage";
-import Subheader from "../components/Subheader";
+import Box from "../components/containers/Box";
+import Flex from "../components/containers/Flex";
+import Header from "../components/text/Header";
+import ProfileImage from "../components/containers/ProfileImage";
+import Subheader from "../components/text/Subheader";
 import dateFormatter from "../helpers";
 import { BREAKPOINTS } from "../constants";
 
@@ -18,6 +18,7 @@ const StyledBox = styled(Box)`
   @media (max-width: ${BREAKPOINTS.tablet}px) {
     margin: 16px 0px;
     width: auto;
+    overflow-y: hidden;
   }
 `;
 

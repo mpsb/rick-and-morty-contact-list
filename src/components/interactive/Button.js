@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledButton = styled.button`
   font-family: Orbitron;
   font-size: 16px;
-  color: #01041f;
+  color: var(--background-color);
   font-weight: 500;
   border: 2px solid var(--primary-color);
   background: var(--primary-color);
@@ -13,8 +13,8 @@ const StyledButton = styled.button`
   transition: 0.2s ease;
 
   :hover {
-    border: 2px solid #21cf67;
-    background: #21cf67;
+    border: 2px solid var(--secondary-color);
+    background: var(--secondary-color);
   }
 `;
 

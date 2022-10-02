@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/containers/Navbar";
 import Contact from "./pages/Contact";
 import Index from "./pages/Index";
 import ContactProfile from "./pages/ContactProfile";
@@ -28,7 +28,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <AppContainer className="styled-scrollbars">
+        <AppContainer>
           <Navbar links={links} />
           <Routes>
             <Route path="/" element={<Index />} />

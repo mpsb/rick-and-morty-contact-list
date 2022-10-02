@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledSelect = styled.select`
   cursor: pointer;
-  border: 2px solid #8bcf21;
+  border: 2px solid var(--primary-color);
   padding: 12px;
   background-color: transparent;
   font-family: Orbitron;
@@ -14,18 +14,18 @@ const StyledSelect = styled.select`
 
   :focus {
     outline: none;
-    border: 2px solid #21cf67;
+    border: 2px solid var(--secondary-color);
   }
 
   :hover {
-    border: 2px solid #21cf67;
+    border: 2px solid var(--secondary-color);
   }
 `;
 
 const StyledOption = styled.option`
-  background-color: #01041f;
+  background-color: var(--background-color);
   padding: 8px;
-  border: 2px solid #8bcf21;
+  border: 2px solid var(--primary-color);
 `;
 
 export default function Select({ options, handleChange, value }) {

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledProfileImageContainer = styled.div`
-  border: 4px solid #8bcf21;
+  border: 4px solid var(--primary-color);
   background: url(${(props) => props.imageUrl});
   background-size: cover;
   background-repeat: no-repeat;

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { BREAKPOINTS } from "../constants";
+import { BREAKPOINTS } from "../../constants";
 
 const StyledBox = styled.div`
-  border: 4px solid #8bcf21;
+  border: 4px solid var(--primary-color);
   display: flex;
   flex-direction: ${(props) =>
     props.flexDirection ? props.flexDirection : "column"};

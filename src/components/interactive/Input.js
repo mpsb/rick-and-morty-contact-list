@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledInput = styled.input`
-  border: 2px solid #8bcf21;
+  border: 2px solid var(--primary-color);
   padding: 12px;
   background-color: transparent;
   font-family: Orbitron;
@@ -12,16 +12,16 @@ const StyledInput = styled.input`
   margin-bottom: 16px;
 
   ::placeholder {
-    color: rgba(139, 207, 33, 0.7);
+    color: var(--placeholder-color);
   }
 
   :focus {
     outline: none;
-    border: 2px solid #21cf67;
+    border: 2px solid var(--secondary-color);
   }
 
   :hover {
-    border: 2px solid #21cf67;
+    border: 2px solid var(--secondary-color);
   }
 `;
 

@@ -8,6 +8,11 @@ const StyledLink = styled(Link)`
   font-size: ${(props) => (props.fontSize ? props.fontSize : "32")}px;
   letter-spacing: 0.025em;
   text-decoration: none;
+  transition: 0.2s ease;
+
+  :hover {
+    color: var(--secondary-color);
+  }
 `;
 
 export default function RouterLink({ to, children, fontSize, onClick }) {

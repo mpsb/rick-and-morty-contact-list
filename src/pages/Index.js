@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Flex from "../components/Flex";
-import Title from "../components/Title";
+import Flex from "../components/containers/Flex";
+import Title from "../components/text/Title";
 
 const StyledFlex = styled(Flex)`
   width: 100%;
