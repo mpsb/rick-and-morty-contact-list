@@ -102,7 +102,6 @@ export default function Contact() {
     fetch(`https://rickandmortyapi.com/api/character/?name=${nameToSearch}&gender=${gender}&status=${status}&page=${pageNumber}`)
          .then((response) => response.json())
          .then((data) => {
-          console.log(data.results.length)
           setProfiles(profiles.concat(data.results));
          })
          .catch((err) => {
