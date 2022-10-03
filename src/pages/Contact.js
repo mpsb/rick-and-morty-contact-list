@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {createRef, useEffect, useRef, useState} from "react";
+import { useInView } from 'react-intersection-observer';
 import { useDispatch } from "react-redux";
 import {Outlet} from 'react-router-dom';
 import styled from "styled-components";
@@ -41,8 +43,11 @@ export default function Contact() {
   const [gender, setGender] = useState('');
   const [status, setStatus] = useState('');
   const [isFiltersActive, setIsFiltersActive] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
 
   const resultRefs = useRef([]);
+
+  const {ref, inView, entry} = useInView({threshold: 1});
 
   const dispatch = useDispatch();
 
@@ -72,7 +77,8 @@ export default function Contact() {
     fetch(`https://rickandmortyapi.com/api/character/?name=${nameToSearch}&gender=${gender}&status=${status}`)
          .then((response) => response.json())
          .then((data) => {
-            setProfiles(data.results);
+          setProfiles(data.results);
+          setPageNumber(1);
          })
          .catch((err) => {
             console.log(err.message);
@@ -88,7 +94,21 @@ export default function Contact() {
     }
   }, [gender, status])
   
+  useEffect(() => {
+    setPageNumber(pageNumber + 1);
+  }, [inView])
 
+  useEffect(() => {
+    fetch(`https://rickandmortyapi.com/api/character/?name=${nameToSearch}&gender=${gender}&status=${status}&page=${pageNumber}`)
+         .then((response) => response.json())
+         .then((data) => {
+          console.log(data.results.length)
+          setProfiles(profiles.concat(data.results));
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+  }, [pageNumber])
 
   return (
     <StyledFlex flexDirection="row">
@@ -101,6 +121,12 @@ export default function Contact() {
         {profiles ? profiles.map((profile, index) => {
           resultRefs.current[index] = createRef();
           resultRefs.current[index] = profile;
+
+          if(index === profiles.length - 1 && profiles.length%20 === 0) {
+            return <div ref={ref} key={index}>
+              <RouterLink to={`/contact/${profile.id}`} fontSize={16} onClick={event => handleProfileLinkClick(event, index)}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image} role="listitem"/></RouterLink>
+            </div>
+          }
 
           return <RouterLink to={`/contact/${profile.id}`} fontSize={16} key={index} onClick={event => handleProfileLinkClick(event, index)}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image} role="listitem"/></RouterLink>}) : <p>No characters found.</p>}
       </ContactBox>
