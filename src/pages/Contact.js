@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {Outlet} from 'react-router-dom';
 import styled from "styled-components";
 import Header from "../components/text/Header";
-import Box from "../components/containers/Box";
+import {Box} from "../components/containers/Box";
 import Button from "../components/interactive/Button";
 import Input from "../components/interactive/Input";
 import Select from "../components/interactive/Select";
@@ -51,17 +51,14 @@ export default function Contact() {
   }
 
   const handleInputChange = event => {
-    console.log(event.target.value)
     setNameToSearch(event.target.value);
   }
 
   const handleGenderChange = event => {
-    console.log(event.target.value)
     setGender(event.target.value);
   }
 
   const handleStatusChange = event => {
-    console.log(event.target.value)
     setStatus(event.target.value);
   }
 
@@ -91,7 +88,7 @@ export default function Contact() {
     }
   }, [gender, status])
   
-  
+
 
   return (
     <StyledFlex flexDirection="row">

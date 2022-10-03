@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Box from "../components/containers/Box";
+import { Box } from "../components/containers/Box";
 import Flex from "../components/containers/Flex";
 import Header from "../components/text/Header";
 import ProfileImage from "../components/containers/ProfileImage";
 import Subheader from "../components/text/Subheader";
-import dateFormatter from "../helpers";
+import { dateFormatter } from "../helpers";
 import { BREAKPOINTS } from "../constants";
 
 const StyledBox = styled(Box)`
@@ -49,8 +49,6 @@ export default function ContactProfile() {
   const selectedContactProfile = useSelector((state) => state.setProfile.value);
 
   useEffect(() => {
-    console.log(selectedContactProfile);
-
     setEpisodeList([]);
 
     const episodes = selectedContactProfile.episode;
@@ -102,8 +100,8 @@ export default function ContactProfile() {
             <EpisodeItem>Episode</EpisodeItem>
             <EpisodeItem>Created</EpisodeItem>
           </EpisodeRow>
-          {episodeList.map((episode) => (
-            <EpisodeRow flexDirection="row" gap={8}>
+          {episodeList.map((episode, index) => (
+            <EpisodeRow flexDirection="row" gap={8} key={`episode-${index}`}>
               <EpisodeItem>{episode.name}</EpisodeItem>
               <EpisodeItem>{dateFormatter(episode.air_date)}</EpisodeItem>
               <EpisodeItem>{episode.episode}</EpisodeItem>

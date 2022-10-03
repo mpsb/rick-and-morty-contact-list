@@ -16,7 +16,7 @@ const StyledBox = styled.div`
   }
 `;
 
-export default function Box({
+function Box({
   className,
   flexDirection,
   gap,
@@ -38,3 +38,5 @@ export default function Box({
     </StyledBox>
   );
 }
+
+export { Box };

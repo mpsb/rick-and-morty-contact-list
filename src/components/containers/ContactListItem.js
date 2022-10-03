@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Box from "./Box";
+import { Box } from "./Box";
 import Flex from "./Flex";
 import ProfileImage from "./ProfileImage";
 import ContactProfileName from "../text/ContactProfileName";
