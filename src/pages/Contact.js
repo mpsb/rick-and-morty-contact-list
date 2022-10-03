@@ -100,12 +100,12 @@ export default function Contact() {
         <Input placeholder="Search for characters..." handleChange={handleInputChange} value={nameToSearch}/>
         <Select options={genderOptions} handleChange={handleGenderChange} value={gender}/>
         <Select options={statusOptions} handleChange={handleStatusChange} value={status}/>
-        {isFiltersActive ? <Button onClick={resetFilters}>Clear filters</Button> : null}
+        {isFiltersActive ? <Button onClick={resetFilters} role="button">Clear filters</Button> : null}
         {profiles ? profiles.map((profile, index) => {
           resultRefs.current[index] = createRef();
           resultRefs.current[index] = profile;
 
-          return <RouterLink to={`/contact/${profile.id}`} fontSize={16} key={index} onClick={event => handleProfileLinkClick(event, index)}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image}/></RouterLink>}) : <p>No characters found.</p>}
+          return <RouterLink to={`/contact/${profile.id}`} fontSize={16} key={index} onClick={event => handleProfileLinkClick(event, index)}><ContactListItem name={profile.name} species={profile.species} imageUrl={profile.image} role="listitem"/></RouterLink>}) : <p>No characters found.</p>}
       </ContactBox>
       <Outlet/>
     </StyledFlex>

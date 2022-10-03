@@ -31,7 +31,7 @@ const EpisodeRow = styled(Flex)`
   border-bottom: 2px var(--primary-color) solid;
   justify-content: space-between;
   width: auto;
-  padding: 16px;
+  padding: 16px 0px;
   margin-bottom: -1px;
 `;
 
@@ -41,6 +41,7 @@ const EpisodeItem = styled.div`
   display: flex;
   align-items: center;
   text-align: center;
+  padding: 16px;
 `;
 
 export default function ContactProfile() {
@@ -94,7 +95,7 @@ export default function ContactProfile() {
       </Flex>
       <Flex gap={12}>
         <Subheader>Episodes</Subheader>
-        <EpisodeBox gap={16} flexDirection="column">
+        <EpisodeBox gap={0} flexDirection="column" justifyContent="flex-start">
           <EpisodeRow flexDirection="row" gap={8}>
             <EpisodeItem>Name</EpisodeItem>
             <EpisodeItem>Aired</EpisodeItem>

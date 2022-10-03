@@ -15,13 +15,14 @@ const ContactListItemBox = styled(Box)`
   }
 `;
 
-export default function ContactListItem({ name, species, imageUrl }) {
+export default function ContactListItem({ name, species, imageUrl, role }) {
   return (
     <ContactListItemBox
       flexDirection="row"
       gap={16}
       alignItems="center"
       padding={16}
+      role={role}
     >
       <ProfileImage imageUrl={imageUrl} width={57} />
       <Flex>

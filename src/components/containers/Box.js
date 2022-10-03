@@ -22,6 +22,7 @@ export default function Box({
   gap,
   alignItems,
   padding,
+  role,
   children,
 }) {
   return (
@@ -31,6 +32,7 @@ export default function Box({
       gap={gap}
       alignItems={alignItems}
       padding={padding}
+      role={role}
     >
       {children}
     </StyledBox>
