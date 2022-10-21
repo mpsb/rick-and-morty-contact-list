@@ -1,6 +1,6 @@
 # Rick and Morty Contact List
 
-I created a contact list / search tool for users to search up any Rick and Morty character: http://rick-and-morty-contact-list.vercel.app/
+I created a contact list / search tool for users to find information on any Rick and Morty character: http://rick-and-morty-contact-list.vercel.app/
 
 This project was created with [Create React App](https://github.com/facebook/create-react-app), and makes API calls to the [Rick and Morty API](https://rickandmortyapi.com/) to search and display information.
 
